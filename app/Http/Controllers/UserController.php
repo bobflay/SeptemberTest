@@ -49,9 +49,10 @@ class UserController extends Controller
     public function view($id)
     {
     	$user = User::find($id);
+        $users = User::all();
 
-
-    	return view('users.view',compact('user'));
+        $create_from_user = true;
+    	return view('users.view',compact('user','users','create_from_user'));
     }
 
     public function update($id,Request $request)

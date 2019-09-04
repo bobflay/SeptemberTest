@@ -40,6 +40,7 @@ class AddressController extends Controller
 
     public function store(StoreAddress $request)
     {
+
     	$validated = $request->validated();
 
     	$address = Address::create([
@@ -53,6 +54,11 @@ class AddressController extends Controller
     		'user_id'=>$request->user_id,
     		'created_by'=>'admin_user'
     	]);
+
+        if(isset(request()->from_user))
+        {
+            return redirect('/users/'.request()->user_id);
+        }
 
     	return redirect('/addresses');
     }

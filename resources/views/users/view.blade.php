@@ -60,6 +60,10 @@
 
 <div class="row">
   
+  <div>
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-default">Create Address</button>
+  </div>
+
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
@@ -86,14 +90,14 @@
             <th>Building</th>
             <th>Street</th>
           </tr>
-          @foreach($user->addresses as $address)
+          @foreach($user->addresses as $adres)
             
             <tr>
-              <td><a href="/addresses/{{$address->id}}">{{$address->id}}</a></td>
-              <td><a href="/addresses/{{$address->id}}">{{$address->name}}</a></td>
-              <td><a href="/addresses/{{$address->id}}">{{$address->floor}}</a></td>
-              <td><a href="/addresses/{{$address->id}}">{{$address->building}}</a></td>
-              <td><a href="/addresses/{{$address->id}}">{{$address->street}}</a></td>
+              <td><a href="/addresses/{{$adres->id}}">{{$adres->id}}</a></td>
+              <td><a href="/addresses/{{$adres->id}}">{{$adres->name}}</a></td>
+              <td><a href="/addresses/{{$adres->id}}">{{$adres->floor}}</a></td>
+              <td><a href="/addresses/{{$adres->id}}">{{$adres->building}}</a></td>
+              <td><a href="/addresses/{{$adres->id}}">{{$adres->street}}</a></td>
             </tr>
 
           @endforeach
@@ -107,6 +111,36 @@
   </div>
 </div>
 
+
+
+
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Address</h4>
+      </div>
+      <div class="modal-body">
+
+        <form role="form"  method="POST" action="/addresses">
+          @csrf
+          @include('addresses.form')
+          <input type="hidden" name="from_user" value="true">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create Address</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
 
 
 
