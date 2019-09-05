@@ -11,6 +11,12 @@
 |
 */
 
+
+Route::get('test',function(){
+	return view('test');
+});
+
+
 Route::get('/','HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/users','UserController@index');
